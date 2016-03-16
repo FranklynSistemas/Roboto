@@ -1,0 +1,57 @@
+<!DOCTYPE html>  
+<html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->  
+<head>  
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>CODETutorial Mean seed</title>
+</head>  
+<body>  
+  <script src="js/socket.io-1.4.5.js"></script>
+  <script src="js/angular.js"></script>  
+  <script src="angular-socket-io/socket.js"></script>
+ 
+    <h1>{{"Led controller"}}</h1>
+  <div ng-controller="ArduController">
+    <button ng-click="ledOn()">Encender led1</button>
+    <button ng-click="ledOff()">Apagar led1</button>
+    <button ng-click="ledOn1()">Encender led2</button>
+    <button ng-click="ledOff1()">Apagar led2</button>
+  </div>
+ 
+<script type="text/javascript">  
+    var app = angular.module('myApp', ['btford.socket-io']).
+    factory('mySocket', function (socketFactory) {
+        return socketFactory();
+    }).
+    controller('ArduController', function ($scope,mySocket) {
+ 
+        $scope.ledOn = function () {
+ 
+            mySocket.emit('led:on');
+            console.log('LED ON');
+        };
+ 
+ 
+        $scope.ledOff = function () {
+ 
+            mySocket.emit('led:off');
+            console.log('LED OFF');  
+        };    
+
+        $scope.ledOn1 = function () {
+ 
+            mySocket.emit('led1:on');
+            console.log('LED ON');
+        };
+ 
+ 
+        $scope.ledOff1 = function () {
+ 
+            mySocket.emit('led1:off');
+            console.log('LED OFF');  
+        };    
+});
+ 
+</script>  
+</body>
+</html>
