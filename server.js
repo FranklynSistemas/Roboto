@@ -3,7 +3,13 @@ var express        = require('express');
 var app            = express();  
 var httpServer = require("http").createServer(app);  
 var five = require("johnny-five");  
+var Raspi = require("raspi-io");
 var io=require('socket.io')(httpServer);
+
+
+var board = new five.Board({
+  io: new Raspi();
+});
  
 var port = 3000; 
  
@@ -18,28 +24,23 @@ console.log('Servidor disponible en http://localhost:' + port);
 var led, led1;
  
 //Arduino board connection
- 
+/* 
 var board = new five.Board();  
 board.on("ready", function() {  
     console.log('Arduino connected');
     led = new five.Led(2);
     led1 = new five.Led(8);
 });
-/*
+*/
+
 //Raspberry board connection
 //npm install johnny-five raspi-io
 
-var five = require("johnny-five");
-var Raspi = require("raspi-io");
-var board = new five.Board({
-  io: new Raspi()
-});
 
 board.on("ready", function() {
   var led = new five.Led("P1-13");
-  led.blink();
 });
- */
+ 
 
 //Socket connection handler
 io.on('connection', function (socket) {  
