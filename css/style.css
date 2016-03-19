@@ -5,32 +5,36 @@ body {
 #BotoneArriba {
 	background-image:url('../img/FlechaArriba.png');
 	background-repeat:no-repeat;
-  	height:200px;
-  	width:200px;
+  	height:99px;
+  	width:85px;
   	background-position:center;
+  	background-size: cover;
 }
 
 #BotoneAbajo {
 	background-image:url('../img/FlechaAbajo.png');
 	background-repeat:no-repeat;
-  	height:200px;
-  	width:200px;
+  	height:99px;
+  	width:85px;
   	background-position:center;
+  	background-size: cover;
 }
 
 #BotoneIzquierda {
 	background-image:url('../img/FlechaIzquierda.png');
 	background-repeat:no-repeat;
-  	height:200px;
-  	width:200px;
+  	height:85px;
+  	width:99px;
   	background-position:center;
+  	background-size: cover;
 }
 
 #BotoneDerecha {
 	background-image:url('../img/FlechaDerecha.png');
 	background-repeat:no-repeat;
-  	height:200px;
-  	width:200px;
+  	height:85px;
+  	width:99px;
   	background-position:center;
+  	background-size: cover;
 }
 
