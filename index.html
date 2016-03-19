@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Robotin</title>
+</head>
+<body>
+  <script src="js/socket.js"></script>
+  <script src="js/angular.js"></script>
+  <script src="angular-socket-io/socket.js"></script>
+  <script src="js/script.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <h1>{{"Motores controller"}}</h1>
+  <div ng-controller="ArduController">
+    <button ng-click="motorA1On()">Adelante1</button>
+    <button ng-click="motorA1Off()">off1</button>
+    <button ng-click="motorA2On()">Atras1</button>
+    <button ng-click="motorA2Off()">offAtras1</button>
+
+    <button ng-click="motorB1On()">Adelante2</button>
+    <button ng-click="motorB1Off()">off2</button>
+    <button ng-click="motorB2On()">Atras2</button>
+    <button ng-click="motorB2Off()">offAtras2</button>
+<br>
+<center>
+    <div>
+        <table  style="width:50%; height:50%">
+          <tr>
+              <td></td>
+              <td><button ng-mousedown="Adelante()" ng-mouseup="SinMovimiento()" class="btn btn-info" name="boton"><img src="img/FlechaArriba.png"></button></td> 
+              <td></td>
+        </tr>
+        <tr>
+              <td><button ng-mousedown="Izquierda()" ng-mouseup="SinMovimiento()" class="btn btn-info" name="boton"><img src="img/FlechaIzquierda.png"></button></td>
+              <td></td> 
+              <td><button ng-mousedown="Derecha()" ng-mouseup="SinMovimiento()" class="btn btn-info" name="boton"><img src="img/FlechaDerecha.png"></button></td>
+        </tr>
+        <tr>
+              <td></td>
+              <td><button ng-mousedown="Atras()" ng-mouseup="SinMovimiento()" class="btn btn-info" name="boton"><img src="img/FlechaAbajo.png"></button></td> 
+              <td></td>
+        </tr>
+        </table>
+    </div>
+</center>
+
+
+  </div>
+
+<script type="text/javascript">
+ var app = angular.module('myApp', ['btford.socket-io']).
+    factory('mySocket', function (socketFactory) {
+        return socketFactory();
+    }).
+    controller('ArduController', function ($scope,mySocket) {
+
+        $scope.motorA1On = function () {
+
+            mySocket.emit('motorA1:on');
+            console.log('LED ON');
+        };
+
+
+        $scope.motorA1Off = function () {
+
+            mySocket.emit('motorA1:off');
+            console.log('LED OFF');
+        };
+
+        $scope.motorA2On = function () {
+
+            mySocket.emit('motorA2:on');
+            console.log('LED ON');
+        };
+
+        $scope.motorA2Off = function () {
+
+            mySocket.emit('motorA2:off');
+            console.log('LED OFF');
+        };
+
+       $scope.motorB1On = function () {
+
+            mySocket.emit('motorB1:on');
+            console.log('LED ON');
+        };
+
+
+        $scope.motorB1Off = function () {
+
+            mySocket.emit('motorB1:off');
+            console.log('LED OFF');
+        };
+
+         $scope.motorB2On = function () {
+
+            mySocket.emit('motorB2:on');
+            console.log('LED ON');
+        };
+
+        $scope.motorB2Off = function () {
+
+            mySocket.emit('motorB2:off');
+            console.log('LED OFF');
+        };
+
+        $scope.Adelante = function(){
+           console.log('Adelante');
+           Vibrar();
+           mySocket.emit('motorA1:off');
+           mySocket.emit('motorA2:off');
+           mySocket.emit('motorB1:off');
+           mySocket.emit('motorB2:off'); 
+           mySocket.emit('motorA1:on');
+           mySocket.emit('motorB2:on');
+        }
+
+        $scope.Atras = function(){
+           console.log('Atras');
+           Vibrar();
+           mySocket.emit('motorA1:off');
+           mySocket.emit('motorA2:off');
+           mySocket.emit('motorB1:off');
+           mySocket.emit('motorB2:off'); 
+           mySocket.emit('motorA2:on');
+           mySocket.emit('motorB1:on');
+        }
+
+        $scope.Izquierda = function(){
+           console.log('Izquierda');
+           Vibrar();
+           mySocket.emit('motorA1:off');
+           mySocket.emit('motorA2:off');
+           mySocket.emit('motorB1:off');
+           mySocket.emit('motorB2:off'); 
+           mySocket.emit('motorA1:on');
+           mySocket.emit('motorB2:off');
+        }
+
+        $scope.Derecha = function(){
+           console.log('Derecha');
+           Vibrar();
+           mySocket.emit('motorA1:off');
+           mySocket.emit('motorA2:off');
+           mySocket.emit('motorB1:off');
+           mySocket.emit('motorB2:off'); 
+           mySocket.emit('motorA1:off');
+           mySocket.emit('motorB2:on');
+        }
+
+        $scope.SinMovimiento = function(){
+           console.log('SinMovimiento');
+           Vibrar();
+           mySocket.emit('motorA1:off');
+           mySocket.emit('motorA2:off');
+           mySocket.emit('motorB1:off');
+           mySocket.emit('motorB2:off'); 
+           mySocket.emit('motorA1:off');
+           mySocket.emit('motorB2:off');
+        }
+
+
+
+});
+
+</script>
+</body>
+</html>
+
+
