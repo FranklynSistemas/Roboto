@@ -2,7 +2,35 @@ body {
 	background-color: darkgray;
 }
 
-#Botones {
-	height: 100%;
-	width: 100%;
+#BotoneArriba {
+	background-image:url('../img/FlechaArriba.png');
+	background-repeat:no-repeat;
+  	height:200px;
+  	width:200px;
+  	background-position:center;
 }
+
+#BotoneAbajo {
+	background-image:url('../img/FlechaAbajo.png');
+	background-repeat:no-repeat;
+  	height:200px;
+  	width:200px;
+  	background-position:center;
+}
+
+#BotoneIzquierda {
+	background-image:url('../img/FlechaIzquierda.png');
+	background-repeat:no-repeat;
+  	height:200px;
+  	width:200px;
+  	background-position:center;
+}
+
+#BotoneDerecha {
+	background-image:url('../img/FlechaDerecha.png');
+	background-repeat:no-repeat;
+  	height:200px;
+  	width:200px;
+  	background-position:center;
+}
+
